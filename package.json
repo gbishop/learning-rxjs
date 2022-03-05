@@ -1,0 +1,20 @@
+{
+  "name": "learn-about-rxjs",
+  "version": "1.0.0",
+  "description": "I'm playing to rxjs to learn about it.",
+  "main": "index.js",
+  "scripts": {
+    "start": "snowpack dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "rx-sandbox": "^2.0.3",
+    "rxjs": "^7.5.4"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.3.0",
+    "chai": "^4.3.6",
+    "snowpack": "^3.8.8"
+  }
+}
