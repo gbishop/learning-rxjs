@@ -9,12 +9,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "rx-sandbox": "^2.0.3",
     "rxjs": "^7.5.4"
   },
   "devDependencies": {
-    "@types/chai": "^4.3.0",
-    "chai": "^4.3.6",
     "snowpack": "^3.8.8"
   }
 }
