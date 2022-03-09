@@ -1,15 +1,34 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Learning about RxJs</title>
     <script type="module" src="index.js"></script>
-</head>
-<body>
-   <button>A button</button> 
-   <button>A button</button> 
-   <button>A button</button> 
-</body>
+    <style>
+      document {
+          touch-action: none;
+      }
+      button {
+        width: 100px;
+        height: 100px;
+        transition: box-shadow 0s;
+        border-radius: 10px;
+      }
+      button.highlight {
+        box-shadow: inset 0px 0px 5px 50% red;
+        transition: box-shadow 2s ease-in;
+      }
+    </style>
+  </head>
+  <body>
+      <p>Demo of clicking on hover. Hover your mouse over the button. Entering or leaving for less
+          than 0.5 seconds is ignored. Click occurs after 2 seconds of hover.
+      </p>
+    <button>A button</button>
+    <button>B button</button>
+    <button>C button</button>
+    <div id="report"></div>
+  </body>
 </html>

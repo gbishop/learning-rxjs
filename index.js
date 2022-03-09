@@ -1,4 +1,13 @@
-import { filter, fromEvent, mergeWith } from "rxjs";
+import {
+  endWith,
+  filter,
+  fromEvent,
+  mapTo,
+  mergeWith,
+  switchMap,
+  takeUntil,
+  timer,
+} from "rxjs";
 import { ddStreams } from "./dd";
 import { hoverIntentStream } from "./hoverIntent";
 
@@ -15,13 +24,29 @@ const el = enters.pipe(
   mergeWith(leaves),
   filter((e) => e.target instanceof HTMLButtonElement)
 );
-show("el", el);
 
 const { drags, drops } = ddStreams(starts, moves, ends);
 
 drags.subscribe((event) => console.log("drag", event));
 drops.subscribe((event) => console.log(event));
 
-const hovers = hoverIntentStream(1000, el);
+const hovers = hoverIntentStream(500, el);
 
-hovers.subscribe((event) => console.log(event.type, event.target.tagName));
+hovers.subscribe((event) => {
+  event.target instanceof HTMLButtonElement &&
+    event.target.classList.toggle("highlight", event.type === "pointerover");
+});
+
+/* I'm using the transitionend event to synchronize the click with css transition.
+   We could a timer and do it in js as well.
+*/
+fromEvent(document, "transitionend").subscribe(
+  (event) => event.target instanceof HTMLButtonElement && event.target.click()
+);
+
+document.addEventListener("click", (e) => {
+  if (e.target instanceof HTMLButtonElement) {
+    document.getElementById("report").innerText =
+      e.target.innerText + " clicked";
+  }
+});
